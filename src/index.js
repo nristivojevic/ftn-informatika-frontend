@@ -5,7 +5,11 @@ import { Navbar, Nav, Button, Container} from 'react-bootstrap';
 import Home from './components/Home';
 import Login from './components/authorization/Login'
 import Utakmice from './components/entity/Utakmice';
+import Igraci from './components/entity/Igraci';
 import DodavanjeUtakmice from './components/entity/DodavanjeUtakmice';
+import IzmenaIgraca from './components/entity/IzmenaIgraca';
+
+
 
 import NotFound from './components/NotFound';
 import {logout} from './services/auth';
@@ -42,7 +46,9 @@ class App extends React.Component {
                         <Nav.Link as={Link} to="/utakmice " > 
                             Utakmice
                         </Nav.Link>
-
+                    <Nav.Link as={Link} to="/igraci " > 
+                            Igraci
+                        </Nav.Link>
 
                         <Button onClick={()=>logout()}>Logout</Button>:
                         </Nav>
@@ -52,7 +58,9 @@ class App extends React.Component {
                         <Route path="/" element={<Home/>} />
                         <Route path="/login" element={<Navigate replace to='/'/>} />
                         <Route path="/utakmice" element={<Utakmice />} />
+                        <Route path="/igraci" element={<Igraci />} />
                         <Route path="/utakmice/add" element={<DodavanjeUtakmice />} />
+                        <Route path="/igraci/izmena/:id" element={<IzmenaIgraca/>} />
                         <Route path="*" element={<NotFound/>} />
                     </Routes>
                 </Container>
@@ -72,7 +80,9 @@ class App extends React.Component {
                             <Nav.Link as={Link} to="/utakmice " > 
                                 Utakmice
                             </Nav.Link>
-    
+                            <Nav.Link as={Link} to="/igraci " > 
+                                Igraci
+                            </Nav.Link>
                             <Button onClick={()=>logout()}>Logout</Button>:
                             </Nav>
                         </Navbar>
@@ -81,7 +91,9 @@ class App extends React.Component {
                             <Route path="/" element={<Home/>} />
                             <Route path="/login" element={<Navigate replace to='/'/>} />
                             <Route path="/utakmice" element={<Utakmice />} />
+                            <Route path="/igraci" element={<Igraci />} />
                             <Route path="/utakmice/add" element={<DodavanjeUtakmice />} />
+                            <Route path="/igraci/izmena/:id" element={<IzmenaIgraca/>} />
                             <Route path="*" element={<NotFound/>} />
                         </Routes>
                     </Container>
@@ -99,6 +111,9 @@ class App extends React.Component {
                             <Nav.Link as={Link} to="/utakmice " > 
                                 Utakmice
                             </Nav.Link>
+                            <Nav.Link as={Link} to="/igraci " > 
+                                Igraci
+                            </Nav.Link>
                             <Nav>
                             <Nav.Link as={Link} to="/login">
                                 Login
@@ -109,6 +124,7 @@ class App extends React.Component {
                         <Routes>
                             <Route path="/" element={<Home/>} />
                             <Route path="/utakmice" element={<Utakmice />} />
+                            <Route path="/igraci" element={<Igraci />} />
                             <Route path="/login" element={<Login/>}/>
                             <Route path="*" element={<Navigate replace to = "/login"/>}/>
                         </Routes>
