@@ -13,7 +13,8 @@ constructor(props) {
         pageNo: 0,
         totalPages: 0,
         search:{
-            reprezentacijaId:""
+            odGol:"",
+            doGol:""
         }
     }
 }
@@ -26,7 +27,8 @@ getIgraci(newPageNo) {
     let config = {
         params: {
             pageNo: newPageNo,
-            reprezentacijaId:this.state.search.reprezentacijaId
+            odGol:this.state.search.odGol,
+            doGol:this.state.search.doGol
         }
     }
 
@@ -92,27 +94,35 @@ renderSearchForm() {
     return (
         <>
         <Form style={{ width: "100%" }}>
-
-            <Row><Col>
+            
+        <Row><Col>
                 <Form.Group>
-                    <Form.Label>Naziv reprezentacije</Form.Label>
-                    <Form.Select name="reprezentacijaId" onChange={(e)=>this.onInputChange(e)}>
-                        <option value=""></option>
-                        {this.state.igraci.map((igrac)=>{
-                            return(
-                                <option value={igrac.reprezentacijaId}>{igrac.reprezentacijaNaziv}</option>
-                            );
-                        })}
-                    </Form.Select>
+                    <Form.Label>Broj golova od</Form.Label>
+                    <Form.Control
+                        name="odGol"
+                        as="input"
+                        type="number"
+                        onChange={(e) => this.onInputChange(e)}></Form.Control>
                 </Form.Group>
             </Col></Row>
-
+                        
+            <Row><Col>
+                <Form.Group>
+                    <Form.Label>Broj golova do</Form.Label>
+                    <Form.Control
+                        name="doGol"
+                        as="input"
+                        type="number"
+                        onChange={(e) => this.onInputChange(e)}></Form.Control>
+                </Form.Group>
+            </Col></Row>
         </Form>
         <Row><Col>
             <Button className="mt-3" onClick={() => this.getIgraci(0)}>Pretraga</Button>
         </Col></Row>
         </>
     );
+
 }
   
 renderIgraci() {
