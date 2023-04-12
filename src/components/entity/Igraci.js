@@ -13,7 +13,6 @@ constructor(props) {
         pageNo: 0,
         totalPages: 0,
         search:{
-            reprezentacijaId:"",
             odGol:"",
             doGol:""
         }
@@ -28,7 +27,6 @@ getIgraci(newPageNo) {
     let config = {
         params: {
             pageNo: newPageNo,
-            reprezentacijaId:this.state.search.reprezentacijaId,
             odGol:this.state.search.odGol,
             doGol:this.state.search.doGol
         }
@@ -96,20 +94,6 @@ renderSearchForm() {
     return (
         <>
         <Form style={{ width: "100%" }}>
-
-        <Row><Col>
-                <Form.Group>
-                    <Form.Label>Naziv reprezentacije</Form.Label>
-                    <Form.Select name="reprezentacijaId" onChange={(e)=>this.onInputChange(e)}>
-                        <option value=""></option>
-                        {this.state.igraci.map((igrac)=>{
-                            return(
-                                <option value={igrac.reprezentacijaId}>{igrac.reprezentacijaNaziv}</option>
-                            );
-                        })}
-                    </Form.Select>
-                </Form.Group>
-            </Col></Row>
             
         <Row><Col>
                 <Form.Group>
